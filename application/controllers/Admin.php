@@ -33,4 +33,9 @@
 	    	$data['list_data'] = $list_data_array;
 	    	$this->load->view('admin/layout', $data);
 	    }
+	    public function addshop(){
+	    	$data['main'] = 'addshop';
+	    	$data['css'] = array('maps-google', 'rateit');
+	    	$this->load->view('admin/layout', $data);
+	    }
     }

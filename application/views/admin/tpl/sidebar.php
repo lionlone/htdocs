@@ -22,7 +22,7 @@
       <ul class="nav sub-nav">
         <li class=""><a href="http://localhost/admin/administrator/customer" title="Khách hàng">Khách hàng</a></li>
         <li class=""><a href="http://localhost/admin/administrator/tran" title="Đơn hàng ">Quản lý gian hàng </a></li>
-        <li class=""><a href="http://localhost/admin/administrator/stats_product" title="Thống kê">Thêm gian hàng</a></li>
+        <li class=""><a href="<?= admin_url(); ?>/addshop" title="Thống kê">Thêm gian hàng</a></li>
       </ul>
     </li>
     

@@ -18,6 +18,6 @@ class Client extends CI_Controller {
 		$this->load->view('client/layout', $this->data);
 	}
 	public function listshop(){
-		$this->load->view('client/listshop');
+		$this->load->view('listshop/layout');
 	}
 }
