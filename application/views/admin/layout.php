@@ -5,9 +5,13 @@
             $data['title'] = 'Trang chủ';
             $this->load->view('admin/tpl/head',$data);
         ?>
-        <?php foreach ($css as $key => $value) {
-            echo '<link rel="stylesheet" href="'. base_url() .'public/css/' . $value . '.css">';
-        } ?>
+        <?php
+        if (isset($css)) {
+            foreach ($css as $key => $value) {
+                echo '<link rel="stylesheet" href="'. base_url() .'public/css/' . $value . '.css">';
+            }
+        }
+        ?>
     </head>
     <body class="sb-l-o sb-r-c">
         <div id="main">
