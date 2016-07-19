@@ -2,7 +2,7 @@
     <div class="header-top header-fixed">
     	<div class="container">
         	<div class="ht-left">
-            	<a href="https://www.chodientu.vn"><img src="https://www.chodientu.vn/static/shopv2/images/logo/logo-shop.png"></a>
+            	<a href="<?= base_url(); ?>"><img style="width: 40px;" src="<?= base_url(); ?>public/img/logo.png"></a>
             </div><!-- ht-left -->
             <div class="ht-right">
             	<ul>
@@ -63,15 +63,15 @@
     <div class="container">
         <div class="left">
             <!--<div class="wishlist"><a href="#"><i class="fa fa-heart"></i> Yêu thích (7)</a></div>-->
-            <div class="hotline">Hotline: <b>0986651377</b></div>
+            <div class="hotline">Hotline: <b><?= $Hotline; ?></b></div>
         </div>
         <div class="mid">
-            <div class="shop-name" id="shop-name"><h1>Xả Hàng Giá Shock</h1></div>
+            <div class="shop-name" id="shop-name"><h1><?= $vi_nameshop; ?></h1></div>
             <div class="shop-slogan" style="line-height: 24px; font-style: italic; display: block"></div>
             <ul class="contact">
-                        <li><i class="fa fa-map-marker"></i> 17/1P Nguyễn Thị Tần, P2, Q8, HCM</li>
-                        <li><i class="fa fa-phone"></i> 01234917936</li>
-                        <li><i class="fa fa-envelope"></i> linhkiengiare1234@gmail.com</li>
+                        <li><i class="fa fa-map-marker"></i><?= $vi_address; ?></li>
+                        <li><i class="fa fa-phone"></i> <?= $vi_phone; ?> </li>
+                        <li><i class="fa fa-envelope"></i> <?= $vi_email; ?></li>
                     </ul>
         </div>
         <div class="right">
@@ -95,13 +95,13 @@
     <div class="container">
         <ul>
             <li>
-                <a href="https://www.chodientu.vn/shop/xahanggiashock">
+                <a href="<?= base_url(); ?>">
                     <i class="nav-ico home"></i>
                     <span>Trang chủ</span>
                 </a>
             </li>
             <li>
-                <a href="https://www.chodientu.vn/shop/xahanggiashock/browse">
+                <a href="<?= base_url($linkshop); ?>">
                     <i class="nav-ico product"></i>
                     <span>Sản phẩm</span>
                 </a>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php $this->load->view("listshop/tpl/head"); ?>
+    <?php $this->load->view("listshop/tpl/head", $data_header_shop); ?>
 </head>
 <body style="padding-top: 35px;">
-<?php $this->load->view("listshop/tpl/header"); ?>
+<?php $this->load->view("listshop/tpl/header", $data_header_shop); ?>
 <div class="container">
             <div class="shop2-content">
     <div class="row">

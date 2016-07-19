@@ -4,10 +4,10 @@
 	* Page administrator
 	*/
 	class Admin extends CI_Controller {
-	    function index(){
+	    public function index(){
 			$this->load->view('admin/layout');
 	    }
-	    function data($action = "", $id = ""){
+	    public function data($action = "", $id = ""){
 	    	$data['main'] = 'data';
 	    	$data['edit_data'] = '';
 	    	$query = $this->db->query("SELECT * FROM data");
@@ -34,8 +34,74 @@
 	    	$this->load->view('admin/layout', $data);
 	    }
 	    public function addshop(){
-	    	$data['main'] = 'addshop';
-	    	$data['css'] = array('maps-google', 'rateit');
-	    	$this->load->view('admin/layout', $data);
+	    	if (isset($_POST['action'])) {
+	    		if (empty($_POST['nameshop'])) {
+	    			echo "Lỗi: Tên shop không được để trống .";
+	    		}
+	    		else if(empty($_POST['adminshop'])) {
+	    			echo "Lỗi: Người quản trị gian hàng không được để trống.";
+	    		}
+	    		else if(empty($_POST['linkshop'])) {
+	    			echo "Lỗi: Link shop không được để trống .";
+	    		}
+	    		else if(empty($_POST['websiteshop'])) {
+	    			echo "Lỗi: Webstie shop không được để trống .";
+	    		}
+	    		else if(empty($_POST['DiaChi'])) {
+	    			echo "Lỗi: Đại chỉ không được để trống.";
+	    		}
+	    		else if(empty($_POST['DiaDiem'])) {
+	    			echo "Lỗi: Địa điểm không được để trống.";
+	    		}
+	    		else if(empty($_FILES['avatar'])) {
+	    			echo "Lỗi: Ảnh đại diện không được để trống.";
+	    		}
+	    		else if(empty($_POST['MoTa'])) {
+	    			echo "Lỗi: Mô tả không được để trống.";
+	    		}
+	    		else if(empty($_POST['phoneshop'])) {
+	    			echo "Lỗi: Số điện thoại không được để trống.";
+	    		}
+	    		else if(empty($_POST['emailshop'])) {
+	    			echo "Lỗi: Email không được để trống.";
+	    		}
+		    	else{
+		    		$nameshop =  $_POST['nameshop'];
+			    	$adminshop = $_POST['adminshop'];
+			    	$linkshop = $_POST['linkshop'];
+			    	$websiteshop = $_POST['websiteshop'];
+				    $id_map = $_POST['id-map'];
+				    $lat = $_POST['lat'];
+				    $lng = $_POST['lng'];
+				    $DiaChi = $_POST['DiaChi'];
+				    $DiaDiem = $_POST['DiaDiem'];
+				    //$nameshop = $_POST['avatar'];
+				    $MoTa = $_POST['MoTa'];
+				    $phoneshop = $_POST['phoneshop'];
+				    $emailshop = $_POST['emailshop'];
+
+				    $data=array(
+			            "userid" => "1",
+			            "linkshop" => "$linkshop",
+			            "website" => "$websiteshop",
+			            "listcatid" => "1,2",
+			            "vi_nameshop" => "$nameshop",
+			            "vi_address" => "$DiaDiem",
+			            "vi_phone" => "$phoneshop",
+			            "vi_email" => "$emailshop",
+			        );
+			        if($this->db->insert("listshop", $data)){
+			            //echo "Thêm gian hàng thành công";
+			            echo true;
+			        }else{
+			            echo "Thêm gian hàng không thành công";
+			        }
+		    	}
+	    	}
+	    	else{
+		    	$data['main'] = 'addshop';
+		    	$data['css'] = array('maps-google', 'rateit');
+		    	$this->load->view('admin/layout', $data);
+	    	}
 	    }
     }

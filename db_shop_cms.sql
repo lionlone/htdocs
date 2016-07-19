@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2016 at 08:12 PM
+-- Generation Time: Jul 19, 2016 at 06:09 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -56,6 +56,7 @@ INSERT INTO `data` (`id`, `key`, `data`) VALUES
 
 CREATE TABLE `listshop` (
   `idshop` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
   `linkshop` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `website` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `listcatid` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -64,6 +65,14 @@ CREATE TABLE `listshop` (
   `vi_phone` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `vi_email` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `listshop`
+--
+
+INSERT INTO `listshop` (`idshop`, `userid`, `linkshop`, `website`, `listcatid`, `vi_nameshop`, `vi_address`, `vi_phone`, `vi_email`) VALUES
+(1, 1, 'shopdienthoai', 'shopdienthoai.com', '1,2', 'Cửa hàng điện thoại', 'Số 1 - Xuân Thủy - Cầu Giấy - Hà Nội', '01683216444', 'nguyentrongtuan@gmail.com'),
+(2, 2, 'shoponline', 'shoponline.com', '2,3', 'Shop bán hàng online', '175 Xuân Thủy - Cầu Giấy - Hà Nội', '01686100030', 'botxabong009@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -183,7 +192,6 @@ CREATE TABLE `users` (
   `userid` mediumint(8) UNSIGNED NOT NULL,
   `group_id` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
   `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `md5username` char(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `password` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `first_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -197,16 +205,16 @@ CREATE TABLE `users` (
   `in_groups` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `active` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `checknum` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `idsite` int(11) NOT NULL DEFAULT '0'
+  `siteid` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userid`, `group_id`, `username`, `md5username`, `password`, `email`, `first_name`, `last_name`, `gender`, `photo`, `birthday`, `question`, `answer`, `view_mail`, `in_groups`, `active`, `checknum`, `idsite`) VALUES
-(1, 1, 'Administrator', '200ceb26807d6bf99fd6f4f0d1ca54d4', '{SSHA}wui6PYmX7eXoLNuDCML2mZQBnLBhM3J5', 'botxabong009@gmail.com', 'Administrator', '', '', '', 0, 'cau hoi', 'tra loi', 0, '1', 1, '', 0),
-(2, 2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '{SSHA}JKsh8c2O1SC7f3l8Qo81dyGZPwxadkdq', 'nguyentrongtuan.st@gmail.com', 'admin', '', 'M', '', 1465491600, 'cau hoi', 'tra loi', 0, '2', 1, '', 0);
+INSERT INTO `users` (`userid`, `group_id`, `username`, `password`, `email`, `first_name`, `last_name`, `gender`, `photo`, `birthday`, `question`, `answer`, `view_mail`, `in_groups`, `active`, `checknum`, `siteid`) VALUES
+(1, 1, 'Administrator', '{SSHA}wui6PYmX7eXoLNuDCML2mZQBnLBhM3J5', 'botxabong009@gmail.com', 'Administrator', '', '', '', 0, 'cau hoi', 'tra loi', 0, '1', 1, '', 0),
+(2, 2, 'admin', '{SSHA}JKsh8c2O1SC7f3l8Qo81dyGZPwxadkdq', 'nguyentrongtuan.st@gmail.com', 'admin', '', 'M', '', 1465491600, 'cau hoi', 'tra loi', 0, '2', 1, '', 0);
 
 -- --------------------------------------------------------
 
@@ -286,9 +294,8 @@ ALTER TABLE `shops_product`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`userid`),
   ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `md5username` (`md5username`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `idsite` (`idsite`);
+  ADD KEY `idsite` (`siteid`);
 
 --
 -- Indexes for table `users_groups`
@@ -310,7 +317,7 @@ ALTER TABLE `data`
 -- AUTO_INCREMENT for table `listshop`
 --
 ALTER TABLE `listshop`
-  MODIFY `idshop` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idshop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 --
 -- AUTO_INCREMENT for table `maps`
 --

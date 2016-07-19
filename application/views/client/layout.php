@@ -17,15 +17,12 @@
 
              }
 
-
-
              $(".flexy-menu").flexymenu({
                  speed: 400,
                  type: "vertical",
                  indicator: false
              });
 
-             
          });
     </script>   
 
@@ -34,11 +31,7 @@
     <div class="container">
         
 
-<?php
-    $data_header = $list_data;
-    /*$data_header['nav'] = $nav;*/
-    $this->load->view("client/tpl/header", $data_header);
-?>
+<?php $this->load->view("client/tpl/header", $list_data); ?>
 <div class="googlecpc">
 <script type="text/javascript">
 /* <![CDATA[ */
@@ -415,9 +408,8 @@ var google_remarketing_only = true;
             </div>
         </div>
     </div> 
-<?php 
-    $data_footer['copyright'] = $list_data['copyright'];
-    $this->load->view("client/tpl/footer", $data_footer); 
+<?php
+    $this->load->view("client/tpl/footer", $list_data); 
 ?>
 <!-- Footer -->
 </body>

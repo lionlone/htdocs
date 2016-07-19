@@ -17,7 +17,26 @@ class Client extends CI_Controller {
 	public function index(){
 		$this->load->view('client/layout', $this->data);
 	}
-	public function listshop(){
-		$this->load->view('listshop/layout');
+	public function shop($shop_name = ""){
+		$query = $this->db->query("SELECT * FROM listshop WHERE linkshop = '$shop_name'");
+		if ($query->num_rows() === 1) {
+			$shop_name = 'shop';
+		}
+		switch ($shop_name) {
+			case 'admin':
+				$this->load->view('admin/layout');
+				break;
+			case 'shop':
+				$data['main'] = "";
+				$data_header = $query->row_array();
+				$vi_phone = $this->data['list_data'];
+				$data_header['Hotline'] = $vi_phone['Hotline'];
+				$data['data_header_shop'] = $data_header;
+				$this->load->view('listshop/layout', $data);
+				break;
+			default:
+				$this->load->view('client/layout', $this->data);
+				break;
+		}
 	}
 }

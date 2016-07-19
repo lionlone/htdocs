@@ -118,6 +118,6 @@
 
 <div class="row bg-white">
     <div class="footer">        
-        <span class="copyright"><?php echo $copyright; ?></span>
+        <span class="copyright"><?php echo $list_data['copyright']; ?></span>
     </div>
 </div>

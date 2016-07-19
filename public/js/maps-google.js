@@ -100,10 +100,10 @@ $(document).on('click', '.btn-add', function() {
 		async: false,
 		success: function (data) {
 			$('#form1').trigger('reset');
-			$('.rateit').rateit('reset');
+			//$('.rateit').rateit('reset');
 			$('#btn-submit').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> THÊM ĐỊA ĐIỂM');
 			alert(data);
-			loadTable();
+			//loadTable();
 		},
 		cache: false,
 		contentType: false,
